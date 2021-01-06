@@ -1,0 +1,41 @@
+ALGORITHM algorithm_Problem_2_solution1
+VAR
+    i,j,sum:INTEGER := 0;
+    existe:BOOLEAN := FALSE ;
+    
+    set1  : ARRAY_OF INTEGER[];
+    set2  : ARRAY_OF INTEGER[];
+
+BEGIN
+set1 :=  [12, 13, 6, 10];
+set2 :=  [13, 10, 16, 15];
+
+//browse set1
+    FOR i FROM 0 TO set1.length-1 DO
+      FOR j FROM 0 TO set2.length-1 DO
+       
+           IF (set1[i] = set2[j]) THEN
+              sum := sum +(set1[i] + set2[j])
+               BREAK;
+           END_IF
+      END_FOR
+
+           
+
+   END_FOR
+
+
+
+
+
+
+Write("Sum of distinct elements",sum);
+
+
+
+
+END
+
+
+
+ 

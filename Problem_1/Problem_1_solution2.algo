@@ -1,0 +1,53 @@
+ALGORITHM algorithm_Problem_1_solution2
+VAR
+      h,i,j,sum:INTEGER := 0;
+      count:INTEGER:= 1;
+      htab : HASH_TABLE<INTEGER,INTEGER>;
+    
+    set1  : ARRAY_OF INTEGER[];
+    set2  : ARRAY_OF INTEGER[];
+BEGIN
+    set1 := [3, 1, 7, 9];
+    set2 := [2, 4, 1, 9, 3];
+
+
+
+//browse set1
+
+ FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.lookup(set1[i]) = TRUE) THEN
+           count := htab.get(set1[i]);
+           htab.insert(set1[i],count+1);
+       ELSE
+           htab.insert(set1[i],1);
+       END_IF
+   END_FOR
+
+//browse set2
+ FOR j FROM 0 TO set2.length -1 STEP 1  DO
+       IF (htab.lookup(set2[j]) = TRUE) THEN
+           count := htab.get(set2[j]);
+           htab.insert(set2[j],count+1);
+       ELSE
+           htab.insert(set2[j],1);
+       END_IF
+   END_FOR
+
+
+// loop the hash table and find the sum of all distinct elements
+
+ FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.get(set1[i]) = 1) THEN
+       sum := sum +set1[i];
+        END_IF
+   END_FOR
+
+FOR j FROM 0 TO set2.length -1 STEP 1  DO
+       IF (htab.get(set2[j]) = 1) THEN
+       sum := sum +set2[j];
+        END_IF
+   END_FOR
+
+Write("Sum of distinct elements",sum);
+
+END
